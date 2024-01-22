@@ -1,3 +1,7 @@
+provider "aws" {
+  region = "us-east-2"
+}
+
 module "iam_resources" {
   source = "./modules/IAM"
 }
