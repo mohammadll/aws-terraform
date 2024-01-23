@@ -1,3 +1,23 @@
+data "aws_ami" "amazon-linux" {
+  most_recent      = true
+  owners           = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*kernel-6.1-x86_64"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 resource "aws_key_pair" "ec2" {
   key_name   = "ec2-instance"
   public_key = file("${path.module}/terraform.pub")
@@ -36,7 +56,7 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 }
 
 resource "aws_instance" "terraform" {
-  ami                    = var.ami_id
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   placement_group        = aws_placement_group.partition.id
   iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
