@@ -14,3 +14,7 @@ module "instance_resources" {
 module "ebs_resources" {
   source = "./modules/EBS"
 }
+
+module "create_ami_from_instance" {
+  source = "./modules/AMI"
+}
