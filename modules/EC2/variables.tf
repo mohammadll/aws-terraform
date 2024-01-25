@@ -1,3 +1,28 @@
+variable "create_instace" {
+  type    = bool
+  default = true
+}
+
+variable "create_security_group" {
+  type    = bool
+  default = true
+}
+
+variable "create_placement_group" {
+  type    = bool
+  default = true
+}
+
+variable "create_network_interface" {
+  type    = bool
+  default = true
+}
+
+variable "ami_id" {
+  type    = string
+  default = "ami-0cd3c7f72edd5b06d"
+}
+
 variable "instance_type" {
   type    = string
   default = "t2.micro"
@@ -32,8 +57,4 @@ variable "security_ingress_rules" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   }
-}
-
-variable "ec2_instance_role" {
-
 }

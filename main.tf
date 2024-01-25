@@ -7,8 +7,11 @@ module "iam_resources" {
 }
 
 module "instance_resources" {
-  source            = "./modules/EC2"
-  ec2_instance_role = module.iam_resources.ec2_instance_role
+  source                   = "./modules/EC2"
+  create_instace           = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_security_group    = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_placement_group   = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_network_interface = true # this variable is true by default. If you don't want it to be created, change it to false
 }
 
 module "ebs_resources" {
