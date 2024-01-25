@@ -16,7 +16,9 @@ module "ebs_resources" {
 }
 
 module "create_ami_from_instance" {
-  source = "./modules/AMI"
+  source                   = "./modules/AMI"
+  create_instance          = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_ami_from_instance = true # this variable is true by default. If you don't want it to be created, change it to false
 }
 
 module "efs_resources" {
