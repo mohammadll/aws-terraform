@@ -12,7 +12,11 @@ module "instance_resources" {
 }
 
 module "ebs_resources" {
-  source = "./modules/EBS"
+  source                             = "./modules/EBS"
+  create_instance                    = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_instance_volume             = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_instance_volume_attachement = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_instance_volume_snapshot    = true # this variable is true by default. If you don't want it to be created, change it to false
 }
 
 module "create_ami_from_instance" {

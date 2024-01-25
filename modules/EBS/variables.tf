@@ -1,3 +1,23 @@
+variable "create_instance" {
+  type    = bool
+  default = true
+}
+
+variable "create_instance_volume" {
+  type    = bool
+  default = true
+}
+
+variable "create_instance_volume_attachement" {
+  type    = bool
+  default = true
+}
+
+variable "create_instance_volume_snapshot" {
+  type    = bool
+  default = true
+}
+
 variable "instance_type" {
   type    = string
   default = "t2.micro"
