@@ -52,7 +52,6 @@ resource "aws_iam_user" "users" {
 }
 
 data "aws_iam_policy_document" "ec2_get_console_screenshot" {
-  count = local.create_iam_ec2_get_console_screenshot_policy ? 1 : 0
 
   dynamic "statement" {
     for_each = var.ec2_get_console_screenshot
@@ -69,7 +68,7 @@ resource "aws_iam_policy" "ec2_get_console_screenshot" {
   name        = "ec2_get_console_screenshot"
   path        = "/"
   description = "EC2 Get Console Screenshot"
-  policy      = data.aws_iam_policy_document.ec2_get_console_screenshot[0].json
+  policy      = data.aws_iam_policy_document.ec2_get_console_screenshot.json
 }
 
 resource "aws_iam_user_policy_attachment" "user_policy_attachment" {
