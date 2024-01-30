@@ -6,7 +6,7 @@ locals {
   create_iam_ec2_get_console_screenshot_policy              = var.create_iam_ec2_get_console_screenshot_policy
   create_iam_ec2_get_console_screenshot_policy_attachment   = var.create_iam_ec2_get_console_screenshot_policy_attachment
   create_iam_user_group_membership                          = var.create_iam_user_group_membership
-  create_iam_rule_with_policy                               = var.create_iam_rule_with_policy
+  create_iam_role_with_policy                               = var.create_iam_role_with_policy
 }
 
 resource "aws_iam_group" "developers_group" {
@@ -104,7 +104,7 @@ data "aws_iam_policy" "iam_read_only_access" {
 }
 
 resource "aws_iam_role" "instance" {
-  count               = local.create_iam_rule_with_policy ? 1 : 0
+  count               = local.create_iam_role_with_policy ? 1 : 0
   name                = "instance_role"
   path                = "/"
   assume_role_policy  = data.aws_iam_policy_document.instance_assume_role_policy.json
