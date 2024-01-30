@@ -2,31 +2,32 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.32.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.20 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.32.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.20 |
 
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_iam_group.developers_group](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_group) | resource |
-| [aws_iam_group_policy_attachment.group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_policy.ec2_get_console_screenshot](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.iam_read_only_and_s3_full_access](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_policy) | resource |
-| [aws_iam_role.instance](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_role) | resource |
-| [aws_iam_user.users](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_user) | resource |
-| [aws_iam_user_group_membership.group_membership](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_user_group_membership) | resource |
-| [aws_iam_user_policy_attachment.user_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/iam_user_policy_attachment) | resource |
-| [aws_iam_policy.iam_read_only_access](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/iam_policy) | data source |
-| [aws_iam_policy_document.ec2_get_console_screenshot](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.iam_read_only_and_s3_full_access](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.instance_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_group.developers_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group) | resource |
+| [aws_iam_group_policy_attachment.group_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_policy.ec2_get_console_screenshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.iam_read_only_and_s3_full_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_iam_user.users](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user) | resource |
+| [aws_iam_user_group_membership.group_membership](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_group_membership) | resource |
+| [aws_iam_user_policy_attachment.user_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy_attachment) | resource |
+| [aws_iam_policy.iam_read_only_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy) | data source |
+| [aws_iam_policy_document.ec2_get_console_screenshot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.iam_read_only_and_s3_full_access](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.instance_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 

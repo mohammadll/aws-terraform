@@ -2,25 +2,26 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.32.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.20 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.32.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.20 |
 
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_instance.terraform](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/instance) | resource |
-| [aws_key_pair.ec2](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/key_pair) | resource |
-| [aws_network_interface.secondary_ip_address](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/network_interface) | resource |
-| [aws_network_interface_attachment.secondary_ip_address_attachment](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/network_interface_attachment) | resource |
-| [aws_placement_group.partition](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/placement_group) | resource |
-| [aws_security_group.web-server-rules](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/security_group) | resource |
+| [aws_instance.terraform](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
+| [aws_key_pair.ec2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws_network_interface.secondary_ip_address](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface) | resource |
+| [aws_network_interface_attachment.secondary_ip_address_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface_attachment) | resource |
+| [aws_placement_group.partition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/placement_group) | resource |
+| [aws_security_group.web-server-rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 
 ## Inputs
 

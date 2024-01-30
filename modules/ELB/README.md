@@ -2,26 +2,27 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.32.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.20 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.32.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.20 |
 
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_lb.load_balancer](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/lb) | resource |
-| [aws_lb_listener.load_balancer_listener](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/lb_listener) | resource |
-| [aws_lb_listener_rule.listener_rule](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/lb_listener_rule) | resource |
-| [aws_lb_target_group.target_group](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/lb_target_group) | resource |
-| [aws_security_group.elb_sg](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/security_group) | resource |
-| [aws_subnets.subnets_ids](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/subnets) | data source |
-| [aws_vpc.default_vpc](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/vpc) | data source |
+| [aws_lb.load_balancer](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
+| [aws_lb_listener.load_balancer_listener](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener) | resource |
+| [aws_lb_listener_rule.listener_rule](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener_rule) | resource |
+| [aws_lb_target_group.target_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group) | resource |
+| [aws_security_group.elb_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_subnets.subnets_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
+| [aws_vpc.default_vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs
 

@@ -2,26 +2,27 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.32.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.20 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.32.1 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.20 |
 
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aws_efs_backup_policy.policy](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/efs_backup_policy) | resource |
-| [aws_efs_file_system.efs](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/efs_file_system) | resource |
-| [aws_efs_mount_target.efs_mount_target](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/efs_mount_target) | resource |
-| [aws_security_group.efs_mount_target_sg](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/resources/security_group) | resource |
-| [aws_availability_zones.available_zones](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/availability_zones) | data source |
-| [aws_subnets.subnets_ids](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/subnets) | data source |
-| [aws_vpc.default_vpc](https://registry.terraform.io/providers/hashicorp/aws/5.32.1/docs/data-sources/vpc) | data source |
+| [aws_efs_backup_policy.policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_backup_policy) | resource |
+| [aws_efs_file_system.efs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_file_system) | resource |
+| [aws_efs_mount_target.efs_mount_target](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/efs_mount_target) | resource |
+| [aws_security_group.efs_mount_target_sg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_availability_zones.available_zones](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws_subnets.subnets_ids](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
+| [aws_vpc.default_vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
 
 ## Inputs
 
