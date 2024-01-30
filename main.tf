@@ -34,3 +34,11 @@ module "efs_resources" {
   create_efs_mount_target  = true # this variable is true by default. If you don't want it to be created, change it to false
   create_efs_backup_policy = true # this variable is true by default. If you don't want it to be created, change it to false
 }
+
+module "elb_resources" {
+  source                = "./modules/ELB"
+  create_security_group = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_load_balancer  = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_target_group   = true # this variable is true by default. If you don't want it to be created, change it to false
+  create_listener_rule  = true # this variable is true by default. If you don't want it to be created, change it to false
+}
