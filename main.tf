@@ -14,7 +14,7 @@ module "iam_resources" {
   create_iam_ec2_get_console_screenshot_policy              = true
   create_iam_ec2_get_console_screenshot_policy_attachment   = true
   create_iam_user_group_membership                          = true
-  create_iam_rule_with_policy                               = true
+  create_iam_role_with_policy                               = true
 }
 
 module "instance_resources" {
