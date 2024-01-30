@@ -33,7 +33,7 @@ variable "create_iam_user_group_membership" {
   default = true
 }
 
-variable "create_iam_rule_with_policy" {
+variable "create_iam_role_with_policy" {
   type    = bool
   default = true
 }
