@@ -2,7 +2,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | 5.32.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.20 |
 
 
 ## Modules
@@ -15,4 +16,3 @@
 | <a name="module_elb_resources"></a> [elb\_resources](#module\_elb\_resources) | ./modules/ELB | n/a |
 | <a name="module_iam_resources"></a> [iam\_resources](#module\_iam\_resources) | ./modules/IAM | n/a |
 | <a name="module_instance_resources"></a> [instance\_resources](#module\_instance\_resources) | ./modules/EC2 | n/a |
-
