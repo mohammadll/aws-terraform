@@ -18,11 +18,6 @@ variable "create_network_interface" {
   default = true
 }
 
-variable "ami_id" {
-  type    = string
-  default = "ami-0cd3c7f72edd5b06d"
-}
-
 variable "instance_type" {
   type    = string
   default = "t2.micro"
