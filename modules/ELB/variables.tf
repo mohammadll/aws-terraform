@@ -19,22 +19,22 @@ variable "create_listener_rule" {
 }
 
 variable "create_launch_configuration" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "create_autoscaling_group" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "create_autoscaling_attachment" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "create_autoscaling_policy" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -127,49 +127,49 @@ variable "rule_priority" {
 }
 
 variable "lc_instance_type" {
-  type = string
+  type    = string
   default = "t2.micro"
 }
 
 variable "lc_name_prefix" {
-  type = string
+  type    = string
   default = "terraform-lc-"
 }
 
 variable "autoscaling_group" {
   type = object({
-    name = string
-    max_size = number
-    min_size = number
-    cooldown = number
+    name                      = string
+    max_size                  = number
+    min_size                  = number
+    cooldown                  = number
     health_check_grace_period = number
-    health_check_type = string
-    desired_capacity = number
-    force_delete = bool
+    health_check_type         = string
+    desired_capacity          = number
+    force_delete              = bool
   })
   default = {
-    name = "terraform_autoscaling_group"
-    max_size = 1
-    min_size = 1
-    cooldown = 400
+    name                      = "terraform_autoscaling_group"
+    max_size                  = 1
+    min_size                  = 1
+    cooldown                  = 400
     health_check_grace_period = 400
-    health_check_type = "ELB"
-    desired_capacity = 1
-    force_delete = true
+    health_check_type         = "ELB"
+    desired_capacity          = 1
+    force_delete              = true
   }
 }
 
 variable "autoscaling_policy" {
   type = object({
     autoscaling_policy_name = string
-    policy_type = string
-    predefined_metric_type = string
-    target_value = number
+    policy_type             = string
+    predefined_metric_type  = string
+    target_value            = number
   })
   default = {
     autoscaling_policy_name = "terraform_autoscaling_policy"
-    policy_type = "TargetTrackingScaling"
-    predefined_metric_type = "ASGAverageCPUUtilization"
-    target_value = 40.0
+    policy_type             = "TargetTrackingScaling"
+    predefined_metric_type  = "ASGAverageCPUUtilization"
+    target_value            = 40.0
   }
 }

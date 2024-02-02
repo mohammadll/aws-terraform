@@ -1,12 +1,12 @@
 locals {
-  create_security_group = var.create_security_group
-  create_load_balancer  = var.create_load_balancer
-  create_target_group   = var.create_target_group
-  create_listener_rule  = var.create_listener_rule
-  create_launch_configuration = var.create_launch_configuration
-  create_autoscaling_group = var.create_autoscaling_group
+  create_security_group         = var.create_security_group
+  create_load_balancer          = var.create_load_balancer
+  create_target_group           = var.create_target_group
+  create_listener_rule          = var.create_listener_rule
+  create_launch_configuration   = var.create_launch_configuration
+  create_autoscaling_group      = var.create_autoscaling_group
   create_autoscaling_attachment = var.create_autoscaling_attachment
-  create_autoscaling_policy = var.create_autoscaling_policy
+  create_autoscaling_policy     = var.create_autoscaling_policy
 }
 
 data "aws_ami" "amazon-linux" {
@@ -137,13 +137,13 @@ resource "aws_key_pair" "ec2" {
 }
 
 resource "aws_launch_configuration" "template" {
-  count = local.create_launch_configuration ? 1 : 0
-  name_prefix   = var.lc_name_prefix
-  image_id      = data.aws_ami.amazon-linux.id
-  instance_type = var.lc_instance_type
-  key_name               = aws_key_pair.ec2[0].key_name
-  security_groups    = local.create_security_group ? [aws_security_group.elb_sg[0].id] : null
-  user_data = "${file("${path.module}/install_httpd.sh")}"
+  count           = local.create_launch_configuration ? 1 : 0
+  name_prefix     = var.lc_name_prefix
+  image_id        = data.aws_ami.amazon-linux.id
+  instance_type   = var.lc_instance_type
+  key_name        = aws_key_pair.ec2[0].key_name
+  security_groups = local.create_security_group ? [aws_security_group.elb_sg[0].id] : null
+  user_data       = file("${path.module}/install_httpd.sh")
 
   lifecycle {
     create_before_destroy = true
@@ -151,11 +151,11 @@ resource "aws_launch_configuration" "template" {
 }
 
 resource "aws_autoscaling_group" "autoscaling_group" {
-  count = local.create_launch_configuration && local.create_autoscaling_group ? 1 : 0
+  count                     = local.create_launch_configuration && local.create_autoscaling_group ? 1 : 0
   name                      = var.autoscaling_group["name"]
   max_size                  = var.autoscaling_group["max_size"]
   min_size                  = var.autoscaling_group["min_size"]
-  default_cooldown  = var.autoscaling_group["cooldown"]
+  default_cooldown          = var.autoscaling_group["cooldown"]
   health_check_grace_period = var.autoscaling_group["health_check_grace_period"]
   health_check_type         = var.autoscaling_group["health_check_type"]
   desired_capacity          = var.autoscaling_group["desired_capacity"]
@@ -166,13 +166,13 @@ resource "aws_autoscaling_group" "autoscaling_group" {
 
 # Create a new ALB Target Group attachment
 resource "aws_autoscaling_attachment" "autoscaling_attachment" {
-  count = local.create_target_group && local.create_autoscaling_group && local.create_autoscaling_attachment ? 1 : 0
+  count                  = local.create_target_group && local.create_autoscaling_group && local.create_autoscaling_attachment ? 1 : 0
   autoscaling_group_name = aws_autoscaling_group.autoscaling_group[0].id
   lb_target_group_arn    = aws_lb_target_group.target_group[0].arn
 }
 
 resource "aws_autoscaling_policy" "autoscaling_policy" {
-  count = local.create_autoscaling_group && local.create_autoscaling_policy ? 1 : 0
+  count                  = local.create_autoscaling_group && local.create_autoscaling_policy ? 1 : 0
   autoscaling_group_name = aws_autoscaling_group.autoscaling_group[0].id
   name                   = var.autoscaling_policy["autoscaling_policy_name"]
   policy_type            = var.autoscaling_policy["policy_type"]

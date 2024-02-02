@@ -47,11 +47,11 @@ module "efs_resources" {
 }
 
 module "elb_resources" {
-  source                = "./modules/ELB"
-  create_security_group = true
-  create_load_balancer  = true
-  create_target_group   = true
-  create_listener_rule  = true
+  source                        = "./modules/ELB"
+  create_security_group         = true
+  create_load_balancer          = true
+  create_target_group           = true
+  create_listener_rule          = true
   create_launch_configuration   = true
   create_autoscaling_group      = true
   create_autoscaling_attachment = true
