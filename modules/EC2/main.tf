@@ -5,6 +5,26 @@ locals {
   create_network_interface = var.create_network_interface
 }
 
+data "aws_ami" "amazon-linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*kernel-6.1-x86_64"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 resource "aws_key_pair" "ec2" {
   count      = local.create_instace ? 1 : 0
   key_name   = "ec2-instance"
@@ -42,7 +62,7 @@ resource "aws_placement_group" "partition" {
 
 resource "aws_instance" "terraform" {
   count                  = local.create_instace ? 1 : 0
-  ami                    = var.ami_id
+  ami                    = data.aws_ami.amazon-linux.id
   instance_type          = var.instance_type
   placement_group        = local.create_placement_group ? aws_placement_group.partition[0].id : null
   key_name               = aws_key_pair.ec2[0].key_name
