@@ -3,6 +3,30 @@ locals {
   create_load_balancer  = var.create_load_balancer
   create_target_group   = var.create_target_group
   create_listener_rule  = var.create_listener_rule
+  create_launch_configuration = var.create_launch_configuration
+  create_autoscaling_group = var.create_autoscaling_group
+  create_autoscaling_attachment = var.create_autoscaling_attachment
+  create_autoscaling_policy = var.create_autoscaling_policy
+}
+
+data "aws_ami" "amazon-linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023*kernel-6.1-x86_64"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
 
 data "aws_vpc" "default_vpc" {
@@ -89,7 +113,7 @@ resource "aws_lb_listener_rule" "listener_rule" {
   priority     = var.rule_priority
 
   action {
-    type = "fixed_response"
+    type = "fixed-response"
     fixed_response {
       content_type = "text/plain"
       message_body = "Custom Error, Page Not Found !!!!!"
@@ -102,5 +126,60 @@ resource "aws_lb_listener_rule" "listener_rule" {
     path_pattern {
       values = ["/error"]
     }
+  }
+}
+
+
+resource "aws_key_pair" "ec2" {
+  count      = local.create_launch_configuration ? 1 : 0
+  key_name   = "ec2-instance"
+  public_key = file("${path.module}/terraform.pub")
+}
+
+resource "aws_launch_configuration" "template" {
+  count = local.create_launch_configuration ? 1 : 0
+  name_prefix   = var.lc_name_prefix
+  image_id      = data.aws_ami.amazon-linux.id
+  instance_type = var.lc_instance_type
+  key_name               = aws_key_pair.ec2[0].key_name
+  security_groups    = local.create_security_group ? [aws_security_group.elb_sg[0].id] : null
+  user_data = "${file("${path.module}/install_httpd.sh")}"
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_autoscaling_group" "autoscaling_group" {
+  count = local.create_launch_configuration && local.create_autoscaling_group ? 1 : 0
+  name                      = var.autoscaling_group["name"]
+  max_size                  = var.autoscaling_group["max_size"]
+  min_size                  = var.autoscaling_group["min_size"]
+  default_cooldown  = var.autoscaling_group["cooldown"]
+  health_check_grace_period = var.autoscaling_group["health_check_grace_period"]
+  health_check_type         = var.autoscaling_group["health_check_type"]
+  desired_capacity          = var.autoscaling_group["desired_capacity"]
+  force_delete              = var.autoscaling_group["force_delete"]
+  launch_configuration      = aws_launch_configuration.template[0].name
+  vpc_zone_identifier       = [for subnet_id in data.aws_subnets.subnets_ids.ids : subnet_id]
+}
+
+# Create a new ALB Target Group attachment
+resource "aws_autoscaling_attachment" "autoscaling_attachment" {
+  count = local.create_target_group && local.create_autoscaling_group && local.create_autoscaling_attachment ? 1 : 0
+  autoscaling_group_name = aws_autoscaling_group.autoscaling_group[0].id
+  lb_target_group_arn    = aws_lb_target_group.target_group[0].arn
+}
+
+resource "aws_autoscaling_policy" "autoscaling_policy" {
+  count = local.create_autoscaling_group && local.create_autoscaling_policy ? 1 : 0
+  autoscaling_group_name = aws_autoscaling_group.autoscaling_group[0].id
+  name                   = var.autoscaling_policy["autoscaling_policy_name"]
+  policy_type            = var.autoscaling_policy["policy_type"]
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = var.autoscaling_policy["predefined_metric_type"]
+    }
+    target_value = var.autoscaling_policy["target_value"]
   }
 }

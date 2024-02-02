@@ -18,6 +18,26 @@ variable "create_listener_rule" {
   default = true
 }
 
+variable "create_launch_configuration" {
+  type = bool
+  default = true
+}
+
+variable "create_autoscaling_group" {
+  type = bool
+  default = true
+}
+
+variable "create_autoscaling_attachment" {
+  type = bool
+  default = true
+}
+
+variable "create_autoscaling_policy" {
+  type = bool
+  default = true
+}
+
 variable "load_balancer" {
   type = object({
     name   = string
@@ -104,4 +124,52 @@ variable "load_balancer_listener" {
 variable "rule_priority" {
   type    = number
   default = 5
+}
+
+variable "lc_instance_type" {
+  type = string
+  default = "t2.micro"
+}
+
+variable "lc_name_prefix" {
+  type = string
+  default = "terraform-lc-"
+}
+
+variable "autoscaling_group" {
+  type = object({
+    name = string
+    max_size = number
+    min_size = number
+    cooldown = number
+    health_check_grace_period = number
+    health_check_type = string
+    desired_capacity = number
+    force_delete = bool
+  })
+  default = {
+    name = "terraform_autoscaling_group"
+    max_size = 1
+    min_size = 1
+    cooldown = 400
+    health_check_grace_period = 400
+    health_check_type = "ELB"
+    desired_capacity = 1
+    force_delete = true
+  }
+}
+
+variable "autoscaling_policy" {
+  type = object({
+    autoscaling_policy_name = string
+    policy_type = string
+    predefined_metric_type = string
+    target_value = number
+  })
+  default = {
+    autoscaling_policy_name = "terraform_autoscaling_policy"
+    policy_type = "TargetTrackingScaling"
+    predefined_metric_type = "ASGAverageCPUUtilization"
+    target_value = 40.0
+  }
 }

@@ -22,12 +22,12 @@
 | [aws_network_interface_attachment.secondary_ip_address_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface_attachment) | resource |
 | [aws_placement_group.partition](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/placement_group) | resource |
 | [aws_security_group.web-server-rules](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [aws_ami.amazon-linux](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | n/a | `string` | `"ami-0cd3c7f72edd5b06d"` | no |
 | <a name="input_create_instace"></a> [create\_instace](#input\_create\_instace) | n/a | `bool` | `true` | no |
 | <a name="input_create_network_interface"></a> [create\_network\_interface](#input\_create\_network\_interface) | n/a | `bool` | `true` | no |
 | <a name="input_create_placement_group"></a> [create\_placement\_group](#input\_create\_placement\_group) | n/a | `bool` | `true` | no |
