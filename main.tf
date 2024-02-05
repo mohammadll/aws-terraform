@@ -56,5 +56,11 @@ module "elb_resources" {
   create_autoscaling_group      = true
   create_autoscaling_attachment = true
   create_autoscaling_policy     = true
+}
 
+module "rds_resources" {
+  source                      = "./modules/RDS"
+  create_db_instance          = false
+  create_rds_cluster          = true
+  create_rds_cluster_instance = true
 }
