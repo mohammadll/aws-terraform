@@ -1,6 +1,5 @@
 # Change 'true' to 'false' if you DO NOT want those resources to be created; all of them are set to 'true' by default
 
-
 provider "aws" {
   region = "us-east-2"
 }
