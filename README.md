@@ -10,6 +10,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_S3"></a> [S3](#module\_S3) | ./modules/S3 | n/a |
 | <a name="module_create_ami_from_instance"></a> [create\_ami\_from\_instance](#module\_create\_ami\_from\_instance) | ./modules/AMI | n/a |
 | <a name="module_ebs_resources"></a> [ebs\_resources](#module\_ebs\_resources) | ./modules/EBS | n/a |
 | <a name="module_efs_resources"></a> [efs\_resources](#module\_efs\_resources) | ./modules/EFS | n/a |
