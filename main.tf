@@ -63,3 +63,14 @@ module "rds_resources" {
   create_rds_cluster          = true
   create_rds_cluster_instance = true
 }
+
+module "S3" {
+  source                                   = "./modules/S3"
+  create_s3_bucket                         = true
+  create_s3_bucket_public_access_block     = true
+  create_s3_bucket_policy                  = true
+  create_s3_bucket_versioning              = true
+  create_s3_bucket_lifecycle_configuration = true
+  create_s3_object                         = true
+  create_s3_bucket_website_configuration   = true
+}
